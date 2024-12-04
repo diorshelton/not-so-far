@@ -1,0 +1,16 @@
+.cb-svg{
+  height: 2rem;
+  width: 2rem;
+}
+.cardStyles {
+  background-color: red;
+}
+.inset-card {
+  padding: 3rem;
+  margin:.5rem;
+}
+.inset-heading {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  padding: 1.rem;
+}

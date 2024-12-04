@@ -1,15 +1,14 @@
 // import { useState } from 'react'
-import './globals.css'
-import { Button } from '@radix-ui/themes'
+import "./globals.css";
+import "./cardStyles.css";
+import LocalInset from "./components/LocalInset";
 
 function App() {
-
-  return (
-    <>
-    <Button>Next</Button>
-    <Button>Next</Button>
-    </>
-  )
+	return (
+		<>
+			<LocalInset cbTitle="Mars" cbType="Planet" ></LocalInset>
+		</>
+	);
 }
 
-export default App
+export default App;
