@@ -5,12 +5,16 @@
 .cardStyles {
   background-color: red;
 }
+.inset-box {
+  padding: 0.5rem;
+}
 .inset-card {
-  padding: 3rem;
-  margin:.5rem;
+  padding-left: 4rem;
+  margin: 1rem;
 }
 .inset-heading {
-  margin-top: 2.5rem;
-  margin-bottom: 2rem;
-  padding: 1.rem;
+  margin: 2rem 2rem 2rem;
+  /* margin-top: 2.5rem; */
+  /* margin-bottom: 2.5rem; */
+  /* padding: 1rem; */
 }

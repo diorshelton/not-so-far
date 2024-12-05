@@ -4,21 +4,23 @@ import planet from "../assets/planet.svg";
 
 interface LocalInsetProps {
   /** Title of celestial body */
-  cbTitle: string;
+  cbEnglishName: string;
   /** celestial body type */
   cbType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet"
   /** celestial body vol */
   vol?: number;
+  /** celestial body vol exponent */
+  volExponent?: number;
   /** celestial body density */
   density?: number;
   /** celestial body mass */
   mass?: number;
 }
-const LocalInset = React.forwardRef(({cbTitle, cbType}: LocalInsetProps) => {
+const LocalInset = React.forwardRef(({cbEnglishName, cbType, vol,volExponent, density, mass}: LocalInsetProps) => {
 	return (
-		<Box className="inset-card" minHeight="2rem" maxWidth={"22rem"}>
-			<Container size={"4"}>
-				<Card size={"4"} >
+		<Box  minHeight="2rem" maxWidth={"22rem"}>
+      <Container size={"4"}>
+				<Card size={"4"} className="inset-card">
 					<img
 						className="cb-svg"
 						src={planet}
@@ -31,9 +33,17 @@ const LocalInset = React.forwardRef(({cbTitle, cbType}: LocalInsetProps) => {
 							backgroundColor: "var(--gray-5)",
 						}}
 					/>
-          <Inset>
-            <Heading className="inset-heading" align={"center"}>{cbTitle}</Heading>
-            <Text align={"center"} as="p" size="5">{cbType}
+          <Inset className="inset-box" clip={"padding-box"}>
+            <Heading className="inset-heading" align={"center"}>{cbEnglishName}</Heading>
+            <Text align={"left"} as="p" size="5">Type: {cbType}
+						</Text>
+            <Text align={"left"} as="p" size="5">Volume: {vol}
+              <sup>{volExponent}</sup>
+              km
+						</Text>
+            <Text align={"left"} as="p" size="5">Density: {density}
+						</Text>
+            <Text align={"left"} as="p" size="5">Mass: {mass}
 						</Text>
 					</Inset>
 				</Card>
