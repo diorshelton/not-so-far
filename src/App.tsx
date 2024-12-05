@@ -1,6 +1,5 @@
 // import { useState } from 'react'
 import "./globals.css";
-import "./cardStyles.css";
 import LocalInset from "./components/LocalInset";
 
 function App() {

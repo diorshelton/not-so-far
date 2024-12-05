@@ -1,0 +1,23 @@
+p {
+	text-align: left;
+}
+p,
+h1 {
+	padding: 0.65rem 0.65rem;
+}
+.inset {
+	max-width: 22rem;
+}
+.inset-card {
+	max-width: 16rem;
+	margin: 1rem;
+	padding: 3rem 3rem;
+}
+.cb-svg {
+	margin-bottom: 2rem;
+	height: 2rem;
+	width: 2rem;
+}
+.inset-heading {
+	margin-top: 2.5rem;
+}
