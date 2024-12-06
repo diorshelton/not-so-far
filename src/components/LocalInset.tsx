@@ -7,7 +7,7 @@ interface LocalInsetProps {
 	/** Title of celestial body */
 	cbEnglishName: string;
 	/** celestial body type */
-	cbType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet";
+	cbType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon";
 	/** celestial body vol */
 	vol?: number;
 	/** celestial body vol exponent */
