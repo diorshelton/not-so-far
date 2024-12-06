@@ -1,7 +1,7 @@
 import { Box, Card, Container, Heading, Inset, Text } from "@radix-ui/themes";
 import React from "react";
 import planet from "../assets/planet.svg";
-import "../locaInsetStyles.css"
+import "../component-styles/localInsetStyles.css"
 
 interface LocalInsetProps {
 	/** Title of celestial body */
