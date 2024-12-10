@@ -1,0 +1,13 @@
+.banner {
+		display: flex;
+		justify-content: center;
+    background-image: url(../assets/ssd_banner.png);
+    height: 8rem;
+	}
+
+h1 {
+		color: rgb(255, 220, 62);
+		align-self: center;
+		font-weight: 200;
+		font-size: 3rem;
+	}
