@@ -1,30 +1,36 @@
 import { Box, Card, Container, Heading, Inset, Text } from "@radix-ui/themes";
-import React from "react";
 import planet from "../assets/planet.svg";
 import "../component-styles/localInsetStyles.css"
 
 interface LocalInsetProps {
+	
+	/** ID of celestial body */
+	id: string;
 	/** Title of celestial body */
-	cbEnglishName: string;
+	englishName: string;
 	/** celestial body type */
-	cbType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon";
-	/** celestial body vol */
-	vol?: number;
+	bodyType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon"| "Star";
+	/** celestial body vol value */
+	volValue?: number;
 	/** celestial body vol exponent */
 	volExponent?: number;
 	/** celestial body density */
 	density?: number;
 	/** celestial body mass */
-	mass?: number;
+	massValue?: number;
+	/** mass exponent */
+
+	massExponent?: number;
 }
-const LocalInset = React.forwardRef(
+const LocalInset = (
 	({
-		cbEnglishName,
-		cbType,
-		vol,
+		englishName,
+		bodyType,
+		volValue,
 		volExponent,
 		density,
-		mass,
+		massValue,
+		massExponent,
 	}: LocalInsetProps) => {
 		return (
 			<Box className="inset" minHeight="2rem">
@@ -42,21 +48,23 @@ const LocalInset = React.forwardRef(
 						/>
 						<Inset clip={"padding-box"}>
 							<Heading className="inset-heading" align={"center"}>
-								{cbEnglishName}
+								{englishName}
 							</Heading>
 							<Text className="inset-text" as="p" size="5">
-								Type: {cbType}
+								Type: {bodyType}
 							</Text>
 							<Text className="inset-text" as="p" size="5">
-								Volume: {vol}
+								Volume:{volValue}x10
 								<sup>{volExponent}</sup>
-								km
+								 km<sup>3</sup>
 							</Text>
 							<Text className="inset-text" as="p" size="5">
-								Density: {density}
+								Density: {density} g/cm <sup>3</sup>
 							</Text>
 							<Text className="inset-text" as="p" size="5">
-								Mass: {mass}
+								Mass: {massValue} x 10
+								<sup>{massExponent}</sup>
+								kg
 							</Text>
 						</Inset>
 					</Card>
