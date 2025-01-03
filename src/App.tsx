@@ -5,7 +5,7 @@ import Grid from "./components/Grid";
 import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
 
-/** celestial body vol */
+/** celestial body volume */
 interface Volume {
 	/** base vol value */
 	volValue: number;
@@ -20,7 +20,7 @@ interface Mass {
 	massExponent: number;
 }
 
-type attributes = {
+type Body = {
 	/** ID of celestial body */
 	id: string;
 	/** English name*/
@@ -36,8 +36,8 @@ type attributes = {
 }[];
 
 function App() {
-	const [celestialBodies, setCelestialBodies] = useState<attributes>([]);
-
+	const [celestialBodies, setCelestialBodies] = useState<Body>([]);
+  const [visibleBodies, setVisibleBodies] = useState<Body>([])
 	useEffect(() => {
 		fetch("https://api.le-systeme-solaire.net/rest/bodies/")
 			.then((response) => response.json())
@@ -47,12 +47,16 @@ function App() {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+  }, []);
+  
+  const filterBodyByType = (cbType) => {
+    
+  }
 
 	return (
 		<>
 			<Banner />
-			<LocalSelect />
+      <LocalSelect/>
 			<Grid>
 				{celestialBodies.map((body) => {
 					console.log(body);

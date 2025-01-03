@@ -1,16 +1,16 @@
 import { Select } from "@radix-ui/themes";
-import React from "react";
+// import React, { useState } from "react";
 
-// Create Interface
+// [bodyType, setBodyType] = useState("");
 
-// interface LocalSelectProps {
-//   label: string
-//   value: string
-// }
-// { label, value }: LocalSelectProps
-const LocalSelect = React.forwardRef(() => {
+const handleChange = (e: Event) => {
+	const bodyType = e;
+	console.log(bodyType)
+}
+
+const LocalSelect = (() => {
 	return (
-		<Select.Root size="3" defaultValue="all">
+		<Select.Root size="3" defaultValue="all" onValueChange={(e)=>handleChange(e)}>
 			<Select.Trigger />
 			<Select.Content>
 				<Select.Group>
