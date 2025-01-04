@@ -1,16 +1,15 @@
 import { Select } from "@radix-ui/themes";
-// import React, { useState } from "react";
 
-// [bodyType, setBodyType] = useState("");
 
-const handleChange = (e: Event) => {
-	const bodyType = e;
-	console.log(bodyType)
-}
+const LocalSelect = ({ checkBodyType }) => {
+	
+	const logBodyType = (e: string) => {
+		const bodyType = e;
+		checkBodyType(bodyType)
+	};
 
-const LocalSelect = (() => {
 	return (
-		<Select.Root size="3" defaultValue="all" onValueChange={(e)=>handleChange(e)}>
+		<Select.Root size="3" defaultValue="all" onValueChange={(e) =>{logBodyType(e)}}>
 			<Select.Trigger />
 			<Select.Content>
 				<Select.Group>
@@ -22,10 +21,11 @@ const LocalSelect = (() => {
 					<Select.Item value="dwarf planet">Dwarf Planet</Select.Item>
 					<Select.Item value="moon">Moon</Select.Item>
 					<Select.Item value="planet">Planet</Select.Item>
+					<Select.Item value="star">Star</Select.Item>
 				</Select.Group>
 			</Select.Content>
 		</Select.Root>
 	);
-});
+};
 
 export default LocalSelect;

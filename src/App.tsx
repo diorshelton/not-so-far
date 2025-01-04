@@ -26,7 +26,7 @@ type Body = {
 	/** English name*/
 	englishName: string;
 	/** celestial body type */
-	bodyType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon"| "Star";
+	bodyType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon" | "Star";
 	/** celestial body volume */
 	vol?: Volume;
 	/** celestial body density */
@@ -37,29 +37,53 @@ type Body = {
 
 function App() {
 	const [celestialBodies, setCelestialBodies] = useState<Body>([]);
-  const [visibleBodies, setVisibleBodies] = useState<Body>([])
+	const [visibleBodies, setVisibleBodies] = useState<Body>([]);
 	useEffect(() => {
 		fetch("https://api.le-systeme-solaire.net/rest/bodies/")
 			.then((response) => response.json())
 			.then((data) => {
 				setCelestialBodies(data.bodies);
+				setVisibleBodies(data.bodies);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
-  }, []);
-  
-  const filterBodyByType = (cbType) => {
-    
-  }
+	}, []);
+
+	const filterBodyByType = (filterBy: string) => {
+		if (filterBy === "All") {
+				return setVisibleBodies(celestialBodies)
+			}
+			const selectedType = celestialBodies.filter(
+				(body) => body.bodyType === filterBy
+			);
+			setVisibleBodies(selectedType);
+		};
+
+	const selectedHandler = (e: string) => {
+
+		console.log(e)
+		let alteredString: string = "";
+		const bodyString = e.split("");
+		bodyString.forEach((char: string, i: number) => {
+			if (i > 0 && char === "p") {
+				alteredString += char.toUpperCase();
+			} else if (i === 0) {
+				alteredString += char.toUpperCase();
+			} else {
+				alteredString += char;
+			}
+		});
+		filterBodyByType(alteredString);
+		console.log(alteredString);
+	};
 
 	return (
 		<>
 			<Banner />
-      <LocalSelect/>
+			<LocalSelect checkBodyType={selectedHandler} />
 			<Grid>
-				{celestialBodies.map((body) => {
-					console.log(body);
+				{visibleBodies.map((body) => {
 					return (
 						<LocalInset
 							key={body.id}
@@ -70,7 +94,7 @@ function App() {
 							volExponent={body.vol?.volExponent}
 							massValue={body.mass?.massValue}
 							massExponent={body.mass?.massExponent}
-              density={body.density}
+							density={body.density}
 						/>
 					);
 				})}
