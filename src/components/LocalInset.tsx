@@ -1,6 +1,10 @@
 import { Box, Card, Container, Heading, Inset, Text } from "@radix-ui/themes";
-import planet from "../assets/planet.svg";
 import asteroid from "../assets/asteroid.svg";
+import comet from "../assets/comet.svg";
+import dwarfplanet from "../assets/dwarfplanet.svg";
+import moon from "../assets/moon.svg";
+import planet from "../assets/planet.svg";
+import star from "../assets/star.svg";
 import "../component-styles/localInsetStyles.css";
 
 interface LocalInsetProps {
@@ -32,13 +36,28 @@ const LocalInset = ({
 	massExponent,
 }: LocalInsetProps) => {
 
-	const setSvgImage = (bodyType: string) => {
-		let svgType = '';
-		for (const letter of bodyType) {
-			const char = letter.toLowerCase();
-			svgType += char
+	const setSvgAlt = (altText: string) =>{
+		return `drawing of ${altText}`
+	}
+
+	const setSvgSrc = (bodyType: string) => {
+		setSvgAlt(bodyType)
+
+		let svgString = "";
+
+		const svgTypes = {
+			Asteroid: asteroid,
+			Moon: moon,
+			Comet: comet,
+			Star: star,
+			DwarfPlanet: dwarfplanet,
+			Planet: planet,
+		};
+
+		for (const char of bodyType) {
+			if (char !== " ") svgString += char;
 		}
-		return svgType
+		return svgTypes[svgString];
 	};
 
 	return (
@@ -47,8 +66,8 @@ const LocalInset = ({
 				<Card size={"4"} className="inset-card">
 					<img
 						className="cb-svg"
-						src={planet}
-						alt={setSvgImage(bodyType)}
+						src={setSvgSrc(bodyType)}
+						alt={setSvgAlt(bodyType)}
 						style={{
 							display: "block",
 							width: "100%",
