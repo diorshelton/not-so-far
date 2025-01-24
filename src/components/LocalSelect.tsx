@@ -1,6 +1,10 @@
 import { Select } from "@radix-ui/themes";
 
-const LocalSelect= ({ checkBodyType }) => {
+interface LocalSelectProps {
+	checkBodyType: (arg0: string) => string;
+}
+
+const LocalSelect: React.FC<LocalSelectProps> = ({ checkBodyType }) => {
 
 	const logBodyType = (e: string) => {
 		const bodyType = e;

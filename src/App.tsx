@@ -52,15 +52,15 @@ function App() {
 
 	const filterBodyByType = (filterBy: string) => {
 		if (filterBy === "All") {
-				return setVisibleBodies(celestialBodies)
-			}
-			const selectedType = celestialBodies.filter(
-				(body) => body.bodyType === filterBy
-			);
-			setVisibleBodies(selectedType);
-		};
+			return setVisibleBodies(celestialBodies);
+		}
+		const selectedType = celestialBodies.filter(
+			(body) => body.bodyType === filterBy
+		);
+		setVisibleBodies(selectedType);
+	};
 
-	const selectHandler = (e:string) => {
+	const selectHandler = (e: string): string => {
 		let alteredString: string = "";
 		const bodyString = e.split("");
 
@@ -75,6 +75,7 @@ function App() {
 		});
 
 		filterBodyByType(alteredString);
+		return alteredString
 	};
 
 	return (

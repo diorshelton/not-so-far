@@ -7,6 +7,10 @@ import planet from "../assets/planet.svg";
 import star from "../assets/star.svg";
 import "../component-styles/localInsetStyles.css";
 
+interface SvgSrc {
+	[key: string] : string
+}
+
 interface LocalInsetProps {
 	/** ID of celestial body */
 	id: string;
@@ -42,22 +46,25 @@ const LocalInset = ({
 
 	const setSvgSrc = (bodyType: string) => {
 		setSvgAlt(bodyType)
-
-		let svgString = "";
-
-		const svgTypes = {
-			Asteroid: asteroid,
-			Moon: moon,
-			Comet: comet,
-			Star: star,
-			DwarfPlanet: dwarfplanet,
-			Planet: planet,
+		
+		const svgTypes: SvgSrc = {
+			"Asteroid": asteroid,
+			"Moon": moon,
+			"Comet": comet,
+			"Star": star,
+			"Dwarf Planet": dwarfplanet,
+			"Planet": planet,
 		};
-
-		for (const char of bodyType) {
-			if (char !== " ") svgString += char;
-		}
-		return svgTypes[svgString];
+		// const svgTypes = {
+		// 	"Asteroid": asteroid,
+		// 	"Moon": moon,
+		// 	"Comet": comet,
+		// 	"Star": star,
+		// 	"Dwarf Planet": dwarfplanet,
+		// 	"Planet": planet,
+		// };
+		console.log(bodyType);
+		return svgTypes[bodyType];
 	};
 
 	return (
