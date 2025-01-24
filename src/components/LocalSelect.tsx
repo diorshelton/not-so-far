@@ -25,11 +25,11 @@ const LocalSelect: React.FC<LocalSelectProps> = ({ checkBodyType }) => {
 					<Select.Label>Celestial Bodies</Select.Label>
 					<Select.Separator />
 					<Select.Item value="all">All Celestial Bodies</Select.Item>
-					<Select.Item value="asteroid">Asteroid</Select.Item>
-					<Select.Item value="comet">Comet</Select.Item>
-					<Select.Item value="dwarf planet">Dwarf Planet</Select.Item>
-					<Select.Item value="moon">Moon</Select.Item>
-					<Select.Item value="planet">Planet</Select.Item>
+					<Select.Item value="asteroid">Asteroids</Select.Item>
+					<Select.Item value="comet">Comets</Select.Item>
+					<Select.Item value="dwarf planet">Dwarf Planets</Select.Item>
+					<Select.Item value="moon">Moons</Select.Item>
+					<Select.Item value="planet">Planets</Select.Item>
 					<Select.Item value="star">Star</Select.Item>
 				</Select.Group>
 			</Select.Content>
