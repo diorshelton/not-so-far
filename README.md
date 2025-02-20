@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+# Not So Far
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+#### _{A frontend for the Solar System Open Data API}_
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+* _React, TypeScript, Vite_
+* _Storybook_
+* _Radix UI_
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Description
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+_{Not So Far uses React, TypeScript and Radix UI to provide a visual interface for [Solar System Open Data API](https://api.le-systeme-solaire.net/en/) a RESTful API for querying Solar System data.
+}_
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Setup/Installation Requirements
+
+Requirements
+1. NPM
+2. Text editor (ex. VSCode)
+
+Installation Steps
+* _First ```fork``` and ```clone``` the repo. 
+The fork button is on the upper right of the page. Once the fork is complete, you must ```git clone``` your fork to download the repository files onto your computer_
+* _After cloning the repo in the correct folder. ```cd``` into the cloned folder and ```$ npm install``` the necessary dependencies to work on the project_
+*_To run the dev server type ```npm run dev``` in the terminal
+
+
+## Known Bugs
+* _LocalInset component changes size when viewing celestial bodies by type_
+
+## License
+	MIT
+
+Copyright (c) _02/20/25_ _Dior Shelton_
