@@ -1,7 +1,7 @@
 # Not So Far
 
 
-#### _{A frontend for the Solar System Open Data API}_
+#### _A frontend for the Solar System Open Data API_
 
 ## Technologies Used
 
@@ -12,8 +12,7 @@
 
 ## Description
 
-_Not So Far uses React, TypeScript and Radix UI to provide a visual interface for [Solar System Open Data API](https://api.le-systeme-solaire.net/en/) a RESTful API for querying Solar System data.
-_
+Not So Far uses React, TypeScript and Radix UI to provide a visual interface for [Solar System Open Data API](https://api.le-systeme-solaire.net/en/) a RESTful API for querying Solar System data.
 
 
 
