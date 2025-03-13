@@ -32,7 +32,4 @@ The fork button is on the upper right of the page. Once the fork is complete, yo
 ## Known Bugs
 * _LocalInset component changes size when viewing celestial bodies by type_
 
-## License
-	_MIT_
-
 Copyright (c) _2/20/2025_ _Dior Shelton_
