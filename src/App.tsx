@@ -52,19 +52,18 @@ function App() {
 
 	const filterBodyByType = (filterBy: string) => {
 		if (filterBy === "All") {
-				return setVisibleBodies(celestialBodies)
-			}
-			const selectedType = celestialBodies.filter(
-				(body) => body.bodyType === filterBy
-			);
-			setVisibleBodies(selectedType);
-		};
+			return setVisibleBodies(celestialBodies);
+		}
+		const selectedType = celestialBodies.filter(
+			(body) => body.bodyType === filterBy
+		);
+		setVisibleBodies(selectedType);
+	};
 
-	const selectedHandler = (e: string) => {
-
-		console.log(e)
+	const selectHandler = (e: string): string => {
 		let alteredString: string = "";
 		const bodyString = e.split("");
+
 		bodyString.forEach((char: string, i: number) => {
 			if (i > 0 && char === "p") {
 				alteredString += char.toUpperCase();
@@ -74,14 +73,15 @@ function App() {
 				alteredString += char;
 			}
 		});
+
 		filterBodyByType(alteredString);
-		console.log(alteredString);
+		return alteredString
 	};
 
 	return (
 		<>
 			<Banner />
-			<LocalSelect checkBodyType={selectedHandler} />
+			<LocalSelect checkBodyType={selectHandler} />
 			<Grid>
 				{visibleBodies.map((body) => {
 					return (
