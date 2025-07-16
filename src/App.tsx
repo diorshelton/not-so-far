@@ -4,6 +4,7 @@ import LocalSelect from "./components/LocalSelect";
 import Grid from "./components/Grid";
 import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
+import Pagination from "./components/Pagination";
 
 /** celestial body volume */
 interface Volume {
@@ -75,7 +76,7 @@ function App() {
 		});
 
 		filterBodyByType(alteredString);
-		return alteredString
+		return alteredString;
 	};
 
 	return (

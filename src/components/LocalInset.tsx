@@ -7,7 +7,7 @@ import planet from "../assets/planet.svg";
 import star from "../assets/star.svg";
 import "../component-styles/localInsetStyles.css";
 
-interface SvgSrc {
+interface SVGSource {
 	[key: string] : string
 }
 
@@ -40,14 +40,14 @@ const LocalInset = ({
 	massExponent,
 }: LocalInsetProps) => {
 
-	const setSvgAlt = (altText: string) =>{
+	const setSVGAlt = (altText: string) =>{
 		return `drawing of ${altText}`
 	}
 
-	const setSvgSrc = (bodyType: string) => {
-		setSvgAlt(bodyType)
-		
-		const svgTypes: SvgSrc = {
+	const setSVGSource = (bodyType: string) => {
+		setSVGAlt(bodyType)
+
+		const svgTypes: SVGSource = {
 			"Asteroid": asteroid,
 			"Moon": moon,
 			"Comet": comet,
@@ -55,15 +55,6 @@ const LocalInset = ({
 			"Dwarf Planet": dwarfplanet,
 			"Planet": planet,
 		};
-		// const svgTypes = {
-		// 	"Asteroid": asteroid,
-		// 	"Moon": moon,
-		// 	"Comet": comet,
-		// 	"Star": star,
-		// 	"Dwarf Planet": dwarfplanet,
-		// 	"Planet": planet,
-		// };
-		console.log(bodyType);
 		return svgTypes[bodyType];
 	};
 
@@ -73,8 +64,8 @@ const LocalInset = ({
 				<Card size={"4"} className="inset-card">
 					<img
 						className="cb-svg"
-						src={setSvgSrc(bodyType)}
-						alt={setSvgAlt(bodyType)}
+						src={setSVGSource(bodyType)}
+						alt={setSVGAlt(bodyType)}
 						style={{
 							display: "block",
 							width: "100%",
