@@ -8,7 +8,7 @@ import star from "../assets/star.svg";
 import "../component-styles/localInsetStyles.css";
 
 interface SVGSource {
-	[key: string] : string
+	[key: string]: string;
 }
 
 interface LocalInsetProps {
@@ -39,21 +39,20 @@ const LocalInset = ({
 	massValue,
 	massExponent,
 }: LocalInsetProps) => {
-
-	const setSVGAlt = (altText: string) =>{
-		return `drawing of ${altText}`
-	}
+	const setSVGAlt = (altText: string) => {
+		return `drawing of ${altText}`;
+	};
 
 	const setSVGSource = (bodyType: string) => {
-		setSVGAlt(bodyType)
+		setSVGAlt(bodyType);
 
 		const svgTypes: SVGSource = {
-			"Asteroid": asteroid,
-			"Moon": moon,
-			"Comet": comet,
-			"Star": star,
+			Asteroid: asteroid,
+			Moon: moon,
+			Comet: comet,
+			Star: star,
 			"Dwarf Planet": dwarfplanet,
-			"Planet": planet,
+			Planet: planet,
 		};
 		return svgTypes[bodyType];
 	};
