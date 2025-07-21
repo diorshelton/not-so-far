@@ -47,12 +47,12 @@ const LocalInset = ({
 		setSVGAlt(bodyType);
 
 		const svgTypes: SVGSource = {
-			Asteroid: asteroid,
-			Moon: moon,
-			Comet: comet,
-			Star: star,
+			"Asteroid": asteroid,
+			"Moon": moon,
+			"Comet": comet,
+			"Star": star,
 			"Dwarf Planet": dwarfplanet,
-			Planet: planet,
+			"Planet": planet,
 		};
 		return svgTypes[bodyType];
 	};

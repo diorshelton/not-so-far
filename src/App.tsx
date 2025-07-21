@@ -6,14 +6,13 @@ import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
 import Pagination from "./components/Pagination";
 
-/** celestial body volume */
 interface Volume {
 	/** base vol value */
 	volValue: number;
 	/**exponent value */
 	volExponent: number;
 }
-/** celestial body Mass */
+
 interface Mass {
 	/** base value */
 	massValue: number;
@@ -21,28 +20,28 @@ interface Mass {
 	massExponent: number;
 }
 
-type Body = {
-	/** ID of celestial body */
+export type CelestialBody = {
 	id: string;
-	/** English name*/
 	englishName: string;
-	/** celestial body type */
 	bodyType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon" | "Star";
-	/** celestial body volume */
-	vol?: Volume;
-	/** celestial body density */
-	density?: number;
-	/** celestial body mass */
-	mass?: Mass;
-}[];
+	vol: Volume;
+	density: number;
+	mass: Mass;
+}
+
+type BodyList = CelestialBody[];
+
+interface SolarSystemApiResponse {
+	bodies: CelestialBody[]
+}
 
 function App() {
-	const [celestialBodies, setCelestialBodies] = useState<Body>([]);
-	const [visibleBodies, setVisibleBodies] = useState<Body>([]);
+	const [celestialBodies, setCelestialBodies] = useState<BodyList>([]);
+	const [visibleBodies, setVisibleBodies] = useState<BodyList>([]);
 	useEffect(() => {
 		fetch("https://api.le-systeme-solaire.net/rest/bodies/")
 			.then((response) => response.json())
-			.then((data) => {
+			.then((data: SolarSystemApiResponse) => {
 				setCelestialBodies(data.bodies);
 				setVisibleBodies(data.bodies);
 			})
@@ -56,7 +55,7 @@ function App() {
 			return setVisibleBodies(celestialBodies);
 		}
 		const selectedType = celestialBodies.filter(
-			(body) => body.bodyType === filterBy
+			(body: CelestialBody) => body.bodyType === filterBy
 		);
 		setVisibleBodies(selectedType);
 	};
@@ -83,8 +82,9 @@ function App() {
 		<>
 			<Banner />
 			<LocalSelect checkBodyType={selectHandler} />
+			<Pagination PaginationDataProp={visibleBodies}></Pagination>
 			<Grid>
-				{visibleBodies.map((body) => {
+				{visibleBodies.map((body: CelestialBody) => {
 					return (
 						<LocalInset
 							key={body.id}
