@@ -1,38 +1,27 @@
-import { useState } from "react";
-import { CelestialBody } from "../App";
-
 
 interface PaginationProps {
-	PaginationDataProp: CelestialBody[];
-	pageSize?: number;
+	totalItems: number;
+	currentPage: number;
+	pageSize: number;
+	onPageChange: (page: number) => void;
 }
 
-const Pagination = ({ PaginationDataProp }: PaginationProps, pageSize = 25) => {
-	const [currentPage, setCurrentPage] = useState(1);
+const Pagination = ({ totalItems, currentPage, pageSize, onPageChange} : PaginationProps) => {
 
-	const totalPages = Math.ceil(PaginationDataProp.length / pageSize);
-	const startIndex = (currentPage - 1) * pageSize;
-	const endIndex = startIndex + pageSize;
-	const currentItems = PaginationDataProp.slice(startIndex, endIndex);
+	const totalPages = Math.ceil(totalItems / pageSize);
 
-	const handlePageChange = (newPage: number) => {
-		if (newPage >= 1 && newPage <= totalPages) {
-			setCurrentPage(newPage);
+	if (totalPages < 1) return null;
+
+	const handleClick = (page: number) => {
+		if (page >= 1 && page <= totalPages) {
+			onPageChange(page);
 		}
 	};
 
 	return (
-		<div>
-			{/*Rendered items*/}
-			<ul>
-				{currentItems.map((item) => (
-					<li key={item.id}>{item.englishName}</li>
-				))}
-			</ul>
-			{/*Page Controls*/}
-			<div>
+		<div className="pagination">
 				<button
-					onClick={() => handlePageChange(currentPage - 1)}
+					onClick={() => handleClick(currentPage - 1)}
 					disabled={currentPage === 1}
 				>
 					Previous
@@ -40,20 +29,19 @@ const Pagination = ({ PaginationDataProp }: PaginationProps, pageSize = 25) => {
 				{Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
 					<button
 						key={page}
-						onClick={() => handlePageChange(page)}
+						onClick={() => handleClick(page)}
 						className={currentPage === page ? "active" : ""}
 					>
 						{page}
 					</button>
 				))}
 				<button
-					onClick={() => handlePageChange(currentPage + 1)}
+					onClick={() => handleClick(currentPage + 1)}
 					disabled={currentPage === totalPages}
 				>
 					Next
 				</button>
 			</div>
-		</div>
 	);
 };
 

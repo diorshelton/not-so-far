@@ -38,6 +38,14 @@ interface SolarSystemApiResponse {
 function App() {
 	const [celestialBodies, setCelestialBodies] = useState<BodyList>([]);
 	const [visibleBodies, setVisibleBodies] = useState<BodyList>([]);
+
+	const [currentPage, setCurrentPage] = useState(1);
+	const pageSize = 25;
+
+	const startIndex = (currentPage - 1) * pageSize;
+	const endIndex = startIndex + pageSize;
+	const currentPageItems = visibleBodies.slice(startIndex, endIndex)
+
 	useEffect(() => {
 		fetch("https://api.le-systeme-solaire.net/rest/bodies/")
 			.then((response) => response.json())
@@ -61,6 +69,7 @@ function App() {
 	};
 
 	const selectHandler = (e: string): string => {
+		setCurrentPage(1)
 		let alteredString: string = "";
 		const bodyString = e.split("");
 
@@ -82,10 +91,9 @@ function App() {
 		<>
 			<Banner />
 			<LocalSelect checkBodyType={selectHandler} />
-			<Pagination PaginationDataProp={visibleBodies}></Pagination>
+			<Pagination totalItems={visibleBodies.length} currentPage={currentPage} pageSize={pageSize}onPageChange={setCurrentPage}/>
 			<Grid>
-				{visibleBodies.map((body: CelestialBody) => {
-					return (
+				 {currentPageItems.map((body: CelestialBody) => (
 						<LocalInset
 							key={body.id}
 							id={body.id}
@@ -97,8 +105,7 @@ function App() {
 							massExponent={body.mass?.massExponent}
 							density={body.density}
 						/>
-					);
-				})}
+					))}
 			</Grid>
 		</>
 	);
