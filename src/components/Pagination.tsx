@@ -1,3 +1,5 @@
+import "../component-styles/paginationStyles.css"
+
 interface PaginationProps {
   totalItems: number;
   currentPage: number;
@@ -74,7 +76,7 @@ const Pagination = ({
   return (
     <div className="pagination">
       <button onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
-        Previous
+        Prev
       </button>
 
       {paginationRange.map((page, idx) =>
