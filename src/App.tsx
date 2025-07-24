@@ -86,6 +86,7 @@ function App() {
 		filterBodyByType(alteredString);
 		return alteredString;
 	};
+	console.log(visibleBodies.length)
 
 	return (
 		<>
@@ -104,7 +105,7 @@ function App() {
 							massValue={body.mass?.massValue}
 							massExponent={body.mass?.massExponent}
 							density={body.density}
-						/>
+					 />
 					))}
 			</Grid>
 		</>
