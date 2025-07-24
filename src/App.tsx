@@ -4,15 +4,15 @@ import LocalSelect from "./components/LocalSelect";
 import Grid from "./components/Grid";
 import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
+import Pagination from "./components/Pagination";
 
-/** celestial body volume */
 interface Volume {
 	/** base vol value */
 	volValue: number;
 	/**exponent value */
 	volExponent: number;
 }
-/** celestial body Mass */
+
 interface Mass {
 	/** base value */
 	massValue: number;
@@ -20,28 +20,36 @@ interface Mass {
 	massExponent: number;
 }
 
-type Body = {
-	/** ID of celestial body */
+export type CelestialBody = {
 	id: string;
-	/** English name*/
 	englishName: string;
-	/** celestial body type */
 	bodyType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon" | "Star";
-	/** celestial body volume */
-	vol?: Volume;
-	/** celestial body density */
-	density?: number;
-	/** celestial body mass */
-	mass?: Mass;
-}[];
+	vol: Volume;
+	density: number;
+	mass: Mass;
+}
+
+type BodyList = CelestialBody[];
+
+interface SolarSystemApiResponse {
+	bodies: CelestialBody[]
+}
 
 function App() {
-	const [celestialBodies, setCelestialBodies] = useState<Body>([]);
-	const [visibleBodies, setVisibleBodies] = useState<Body>([]);
+	const [celestialBodies, setCelestialBodies] = useState<BodyList>([]);
+	const [visibleBodies, setVisibleBodies] = useState<BodyList>([]);
+
+	const [currentPage, setCurrentPage] = useState(1);
+	const pageSize = 25;
+
+	const startIndex = (currentPage - 1) * pageSize;
+	const endIndex = startIndex + pageSize;
+	const currentPageItems = visibleBodies.slice(startIndex, endIndex)
+
 	useEffect(() => {
 		fetch("https://api.le-systeme-solaire.net/rest/bodies/")
 			.then((response) => response.json())
-			.then((data) => {
+			.then((data: SolarSystemApiResponse) => {
 				setCelestialBodies(data.bodies);
 				setVisibleBodies(data.bodies);
 			})
@@ -55,12 +63,13 @@ function App() {
 			return setVisibleBodies(celestialBodies);
 		}
 		const selectedType = celestialBodies.filter(
-			(body) => body.bodyType === filterBy
+			(body: CelestialBody) => body.bodyType === filterBy
 		);
 		setVisibleBodies(selectedType);
 	};
 
 	const selectHandler = (e: string): string => {
+		setCurrentPage(1)
 		let alteredString: string = "";
 		const bodyString = e.split("");
 
@@ -75,16 +84,16 @@ function App() {
 		});
 
 		filterBodyByType(alteredString);
-		return alteredString
+		return alteredString;
 	};
 
 	return (
 		<>
 			<Banner />
 			<LocalSelect checkBodyType={selectHandler} />
+			<Pagination totalItems={visibleBodies.length} currentPage={currentPage} pageSize={pageSize}onPageChange={setCurrentPage}/>
 			<Grid>
-				{visibleBodies.map((body) => {
-					return (
+				 {currentPageItems.map((body: CelestialBody) => (
 						<LocalInset
 							key={body.id}
 							id={body.id}
@@ -95,9 +104,8 @@ function App() {
 							massValue={body.mass?.massValue}
 							massExponent={body.mass?.massExponent}
 							density={body.density}
-						/>
-					);
-				})}
+					 />
+					))}
 			</Grid>
 		</>
 	);
