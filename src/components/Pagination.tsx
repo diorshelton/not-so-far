@@ -83,8 +83,9 @@ const Pagination = ({
             {DOTS}
           </span>
         ) : (
-          <button
-            key={page}
+						<button
+//Add "A" to prevent duplicate indexes
+            key={page + "A"}
             onClick={() => handleClick(page)}
             className={page === currentPage ? "active" : ""}
           >
