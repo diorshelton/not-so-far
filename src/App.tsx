@@ -86,7 +86,6 @@ function App() {
 		filterBodyByType(alteredString);
 		return alteredString;
 	};
-	console.log(visibleBodies.length)
 
 	return (
 		<>
