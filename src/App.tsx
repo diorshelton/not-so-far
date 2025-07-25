@@ -6,7 +6,7 @@ import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
 import Pagination from "./components/Pagination";
 import "./component-styles/navigationStyles.css"
-
+import Spinner from "./components/Spinner";
 interface Volume {
 	/** base vol value */
 	volValue: number;
@@ -28,12 +28,12 @@ export type CelestialBody = {
 	vol: Volume;
 	density: number;
 	mass: Mass;
-}
+};
 
 type BodyList = CelestialBody[];
 
 interface SolarSystemApiResponse {
-	bodies: CelestialBody[]
+	bodies: CelestialBody[];
 }
 
 function App() {
@@ -45,14 +45,15 @@ function App() {
 
 	const startIndex = (currentPage - 1) * pageSize;
 	const endIndex = startIndex + pageSize;
-	const currentPageItems = visibleBodies.slice(startIndex, endIndex)
-
+	const currentPageItems = visibleBodies.slice(startIndex, endIndex);
+	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		fetch("https://api.le-systeme-solaire.net/rest/bodies/")
 			.then((response) => response.json())
 			.then((data: SolarSystemApiResponse) => {
 				setCelestialBodies(data.bodies);
 				setVisibleBodies(data.bodies);
+				setLoading(false);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -70,7 +71,7 @@ function App() {
 	};
 
 	const selectHandler = (e: string): string => {
-		setCurrentPage(1)
+		setCurrentPage(1);
 		let alteredString: string = "";
 		const bodyString = e.split("");
 
@@ -87,29 +88,45 @@ function App() {
 		filterBodyByType(alteredString);
 		return alteredString;
 	};
+	{
+		<div>not loading</div>;
+	}
 
 	return (
 		<>
-			<Banner />
-			<div className="navigation">
+			<div>
+				{loading ? (
+					<Spinner />
+				) : (
+					<div>
+						<Banner />
+						<div className="navigation">
 				<LocalSelect checkBodyType={selectHandler} />
-				<Pagination totalItems={visibleBodies.length} currentPage={currentPage} pageSize={pageSize}onPageChange={setCurrentPage}/>
-			</div>
+							<Pagination
+							totalItems={visibleBodies.length}
+							currentPage={currentPage}
+							pageSize={pageSize}
+							onPageChange={setCurrentPage}
+						/>
+						</div>
 			<Grid>
-				 {currentPageItems.map((body: CelestialBody) => (
-						<LocalInset
-							key={body.id}
-							id={body.id}
-							englishName={body.englishName}
-							bodyType={body.bodyType}
-							volValue={body.vol?.volValue}
-							volExponent={body.vol?.volExponent}
-							massValue={body.mass?.massValue}
-							massExponent={body.mass?.massExponent}
-							density={body.density}
-					 />
-					))}
-			</Grid>
+							{currentPageItems.map((body: CelestialBody) => (
+								<LocalInset
+									key={body.id}
+									id={body.id}
+									englishName={body.englishName}
+									bodyType={body.bodyType}
+									volValue={body.vol?.volValue}
+									volExponent={body.vol?.volExponent}
+									massValue={body.mass?.massValue}
+									massExponent={body.mass?.massExponent}
+									density={body.density}
+								/>
+							))}
+						</Grid>
+					</div>
+				)}
+			</div>
 		</>
 	);
 }
