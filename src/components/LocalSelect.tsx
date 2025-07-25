@@ -1,4 +1,5 @@
 import { Select } from "@radix-ui/themes";
+import "../component-styles/localSelectStyles.css"
 
 interface LocalSelectProps {
 	checkBodyType: (arg0: string) => string;
@@ -13,14 +14,14 @@ const LocalSelect: React.FC<LocalSelectProps> = ({ checkBodyType }) => {
 
 	return (
 		<Select.Root
-			size="3"
-			defaultValue="all"
-			onValueChange={(e) => {
-				logBodyType(e);
-			}}
+		size="3"
+		defaultValue="all"
+		onValueChange={(e) => {
+			logBodyType(e);
+		}}
 		>
-			<Select.Trigger />
-			<Select.Content>
+			<Select.Trigger className="select"/>
+			<Select.Content >
 				<Select.Group>
 					<Select.Label>Celestial Bodies</Select.Label>
 					<Select.Separator />
