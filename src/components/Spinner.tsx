@@ -1,7 +1,6 @@
-
 const Spinner = () => {
   return(
-	<div style={{ color: "#ffdc3e" }}>
+	<div style={{ color: "#ffdc3e", display:"grid", placeItems:"center", height:"100vh", alignItems:"center"}}>
 		<svg
 			width="124"
 			height="124"
