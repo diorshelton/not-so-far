@@ -2,12 +2,12 @@
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  padding: 0.5rem;
+  padding-right: 2.5rem,
 }
 
 button.active {
   font-weight: bold;
-  border-color: rgb(255, 220, 62);
+  border-color:#e54d2e;
 }
 
 button:disabled {

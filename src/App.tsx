@@ -5,6 +5,7 @@ import Grid from "./components/Grid";
 import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
 import Pagination from "./components/Pagination";
+import "./component-styles/navigationStyles.css"
 
 interface Volume {
 	/** base vol value */
@@ -90,8 +91,10 @@ function App() {
 	return (
 		<>
 			<Banner />
-			<LocalSelect checkBodyType={selectHandler} />
-			<Pagination totalItems={visibleBodies.length} currentPage={currentPage} pageSize={pageSize}onPageChange={setCurrentPage}/>
+			<div className="navigation">
+				<LocalSelect checkBodyType={selectHandler} />
+				<Pagination totalItems={visibleBodies.length} currentPage={currentPage} pageSize={pageSize}onPageChange={setCurrentPage}/>
+			</div>
 			<Grid>
 				 {currentPageItems.map((body: CelestialBody) => (
 						<LocalInset
