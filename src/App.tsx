@@ -88,13 +88,9 @@ function App() {
 		filterBodyByType(alteredString);
 		return alteredString;
 	};
-	{
-		<div>not loading</div>;
-	}
 
 	return (
 		<>
-			<div>
 				{loading ? (
 					<Spinner />
 				) : (
@@ -126,7 +122,6 @@ function App() {
 						</Grid>
 					</div>
 				)}
-			</div>
 		</>
 	);
 }
