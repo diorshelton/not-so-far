@@ -1,4 +1,5 @@
 import "../component-styles/paginationStyles.css"
+import { Button } from "@radix-ui/themes";
 
 interface PaginationProps {
   totalItems: number;
@@ -75,9 +76,9 @@ const Pagination = ({
 
   return (
     <div className="pagination">
-      <button onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
+      <Button onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
         Prev
-      </button>
+      </Button>
 
       {paginationRange.map((page, idx) =>
         page === DOTS ? (
@@ -85,23 +86,23 @@ const Pagination = ({
             {DOTS}
           </span>
         ) : (
-						<button
+						<Button
 //Add "A" to prevent duplicate indexes
             key={page + "A"}
             onClick={() => handleClick(page)}
             className={page === currentPage ? "active" : ""}
           >
             {page}
-          </button>
+          </Button>
         )
       )}
 
-      <button
+      <Button
         onClick={() => handleClick(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 };
