@@ -58,7 +58,7 @@ const LocalInset = ({
 	};
 
 	return (
-		<Box className="inset" minHeight="2rem">
+		<Box className="inset" >
 			<Container className="container" size={"4"}>
 				<Card size={"4"} className="inset-card">
 					<img
