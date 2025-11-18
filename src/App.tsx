@@ -8,8 +8,6 @@ import Pagination from "./components/Pagination";
 import "./component-styles/navigationStyles.css"
 import Spinner from "./components/Spinner";
 
-const apiKey = import.meta.env.API_KEY
-
 interface Volume {
 	/** base vol value */
 	volValue: number;
@@ -51,12 +49,7 @@ function App() {
 	const currentPageItems = visibleBodies.slice(startIndex, endIndex);
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
-		fetch("https://api.le-systeme-solaire.net/rest/bodies/", {
-			headers: {
-				'Authorization': `Bearer ${apiKey}`,
-				'Content-Type' : 'application/json'
-			}
-		})
+		fetch("https://nsf-serverless.vercel.app/api/nsfProxy")
 			.then((response) => response.json())
 			.then((data: SolarSystemApiResponse) => {
 				setCelestialBodies(data.bodies);
