@@ -5,7 +5,7 @@ import Grid from "./components/Grid";
 import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
 import Pagination from "./components/Pagination";
-import "./component-styles/navigationStyles.css"
+import "./component-styles/navigationStyles.css";
 import Spinner from "./components/Spinner";
 
 interface Volume {
@@ -92,37 +92,37 @@ function App() {
 
 	return (
 		<>
-				{loading ? (
-					<Spinner />
-				) : (
-					<div>
-						<Banner />
-						<div className="navigation">
-				<LocalSelect checkBodyType={selectHandler} />
-							<Pagination
+			{loading ? (
+				<Spinner />
+			) : (
+				<div>
+					<Banner />
+					<div className="navigation">
+						<LocalSelect checkBodyType={selectHandler} />
+						<Pagination
 							totalItems={visibleBodies.length}
 							currentPage={currentPage}
 							pageSize={pageSize}
 							onPageChange={setCurrentPage}
 						/>
-						</div>
-			<Grid>
-							{currentPageItems.map((body: CelestialBody) => (
-								<LocalInset
-									key={body.id}
-									id={body.id}
-									englishName={body.englishName}
-									bodyType={body.bodyType}
-									volValue={body.vol?.volValue}
-									volExponent={body.vol?.volExponent}
-									massValue={body.mass?.massValue}
-									massExponent={body.mass?.massExponent}
-									density={body.density}
-								/>
-							))}
-						</Grid>
 					</div>
-				)}
+					<Grid>
+						{currentPageItems.map((body: CelestialBody) => (
+							<LocalInset
+								key={body.id}
+								id={body.id}
+								englishName={body.englishName}
+								bodyType={body.bodyType}
+								volValue={body.vol?.volValue}
+								volExponent={body.vol?.volExponent}
+								massValue={body.mass?.massValue}
+								massExponent={body.mass?.massExponent}
+								density={body.density}
+							/>
+						))}
+					</Grid>
+				</div>
+			)}
 		</>
 	);
 }
