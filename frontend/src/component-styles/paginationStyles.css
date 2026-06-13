@@ -1,0 +1,19 @@
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-right: 2.5rem,
+}
+
+button.active {
+  font-weight: bold;
+  border-color:#e54d2e;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+.dots {
+  padding: 0.5rem;
+}
