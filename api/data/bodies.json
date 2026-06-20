@@ -1,0 +1,61 @@
+{
+  "data": [
+    {
+      "id": "sun",
+      "englishName": "Sun",
+      "bodyType": "Star",
+      "volume": 1.412e+15,
+      "density": 1.408,
+      "mass": 1.9891e+30
+    },
+    {
+      "id": "mercury",
+      "englishName": "Mercury",
+      "bodyType": "Planet",
+      "volume": 6.08272e+7,
+      "density": 5.427,
+      "mass": 3.3011e+24
+    },
+    {
+      "id": "venus",
+      "englishName": "Venus",
+      "bodyType": "Planet",
+      "volume": 9.28415e+8,
+      "density": 5.243,
+      "mass": 4.8675e+25
+    },
+    {
+      "id": "earth",
+      "englishName": "Earth",
+      "bodyType": "Planet",
+      "volume": 1.08321e+9,
+      "density": 5.513,
+      "mass": 5.97237e+25
+    },
+    {
+      "id": "mars",
+      "englishName": "Mars",
+      "bodyType": "Planet",
+      "volume": 1.63116e+8,
+      "density": 3.934,
+      "mass": 6.4171e+23
+    },
+    {
+      "id": "jupiter",
+      "englishName": "Jupiter",
+      "bodyType": "Planet",
+      "volume": 1.43128e+12,
+      "density": 1.326,
+      "mass": 1.89813e+26
+    },
+    {
+      "id": "pluto",
+      "englishName": "Pluto",
+      "bodyType": "Dwarf Planet",
+      "volume": 7.15e+9,
+      "density": 2.095,
+      "mass": 1.303e+18
+    }
+  ],
+  "meta": {}
+}
