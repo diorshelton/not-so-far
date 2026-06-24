@@ -19,6 +19,7 @@ export type CelestialBody = {
 
 type BodyList = CelestialBody[];
 
+// Phase 2: API returns { data: [...] } — update key to match
 interface SolarSystemApiResponse {
   bodies: CelestialBody[];
 }

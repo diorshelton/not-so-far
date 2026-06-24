@@ -1,6 +1,6 @@
 # Phases
 
-## Phase 1 — Go Server Skeleton
+## Phase 1 — Go Server Skeleton ✅
 Initialize the Go module, write a minimal HTTP server using `net/http`, read `bodies.json` into memory at startup, and serve `GET /bodies` with CORS headers. Use 2–3 placeholder entries in `bodies.json` covering different body types.
 
 **Done when:** `curl http://localhost:8080/bodies` returns valid JSON matching the `CelestialBody` schema with no errors.
