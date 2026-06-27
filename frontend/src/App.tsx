@@ -19,9 +19,8 @@ export type CelestialBody = {
 
 type BodyList = CelestialBody[];
 
-// Phase 2: API returns { data: [...] } — update key to match
 interface SolarSystemApiResponse {
-  bodies: CelestialBody[];
+  data: CelestialBody[];
 }
 
 function App() {
@@ -36,11 +35,11 @@ function App() {
   const currentPageItems = visibleBodies.slice(startIndex, endIndex);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://nsf-serverless.vercel.app/api/nsfProxy")
+    fetch("http://localhost:8080/bodies")
       .then((response) => response.json())
-      .then((data: SolarSystemApiResponse) => {
-        setCelestialBodies(data.bodies);
-        setVisibleBodies(data.bodies);
+      .then((returnedData: SolarSystemApiResponse) => {
+        setCelestialBodies(returnedData.data);
+        setVisibleBodies(returnedData.data);
         setLoading(false);
       })
       .catch((error) => {
