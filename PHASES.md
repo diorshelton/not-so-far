@@ -7,7 +7,7 @@ Initialize the Go module, write a minimal HTTP server using `net/http`, read `bo
 
 ---
 
-## Phase 2 — Frontend Integration
+## Phase 2 — Frontend Integration ✅
 Update the React app to fetch from the local Go server instead of the Vercel proxy. Remove all references to `le-systeme-solaire` and the proxy URL. Add the `*` indicator and explanatory note for bodies with null fields.
 
 **Done when:** The React app runs locally, fetches from `http://localhost:8080/bodies`, and renders data with no console errors. Bodies with null fields display a `*`.
