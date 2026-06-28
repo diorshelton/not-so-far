@@ -12,19 +12,12 @@ interface SVGSource {
 }
 
 interface LocalInsetProps {
-  /** ID of celestial body */
   id: string;
-  /** Title of celestial body */
   englishName: string;
-  /** celestial body type */
   bodyType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon" | "Star";
-  /** celestial body volume */
   volume?: number | null;
-  /** celestial body density */
   density?: number | null;
-  /** celestial body mass */
   mass?: number | null;
-  /** mass exponent */
 }
 const LocalInset = ({
   englishName,
@@ -73,13 +66,13 @@ const LocalInset = ({
               Type: {bodyType}
             </Text>
             <Text className="inset-text" as="p" size="5">
-              Volume:{volume}x10 km<sup>3</sup>
+              Volume: {volume?.toExponential(3) ?? "*"} km³
             </Text>
             <Text className="inset-text" as="p" size="5">
-              Density: {density} g/cm <sup>3</sup>
+              Density: {density ?? "*"} g/cm³
             </Text>
             <Text className="inset-text" as="p" size="5">
-              Mass: {mass} x 10 kg
+              Mass: {mass?.toExponential(4) ?? "*"} kg
             </Text>
           </Inset>
         </Card>

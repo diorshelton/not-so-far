@@ -12,9 +12,9 @@ export type CelestialBody = {
   id: string;
   englishName: string;
   bodyType: "Comet" | "Planet" | "Asteroid" | "Dwarf Planet" | "Moon" | "Star";
-  volume: number;
-  density: number;
-  mass: number;
+  volume: number | null;
+  density: number | null;
+  mass: number | null;
 };
 
 type BodyList = CelestialBody[];
