@@ -14,7 +14,7 @@ Update the React app to fetch from the local Go server instead of the Vercel pro
 
 ---
 
-## Phase 3 — Data Population
+## Phase 3 — Data Population ✅
 Source and populate `bodies.json` with all six body types using authoritative references (NASA JPL, IAU, Wikipedia). Include bodies with incomplete data as null fields rather than omitting them.
 
 **Done when:** `bodies.json` contains at least one entry for each of the six body types, and all entries have `id`, `englishName`, and `bodyType`.
