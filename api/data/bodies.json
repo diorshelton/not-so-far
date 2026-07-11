@@ -55,6 +55,54 @@
       "volume": 7.15e+9,
       "density": 2.095,
       "mass": 1.303e+18
+    },
+    {
+      "id": "moon",
+      "englishName": "Moon",
+      "bodyType": "Moon",
+      "volume": 2.1958e+10,
+      "density": 3.344,
+      "mass": 7.342e+22
+    },
+    {
+      "id": "saturn",
+      "englishName": "Saturn",
+      "bodyType": "Planet",
+      "volume": 8.2713e+14,
+      "density": 0.687,
+      "mass": 5.6834e+26
+    },
+    {
+      "id": "uranus",
+      "englishName": "Uranus",
+      "bodyType": "Planet",
+      "volume": 6.833e+13,
+      "density": 1.27,
+      "mass": 8.6811e+25
+    },
+    {
+      "id": "neptune",
+      "englishName": "Neptune",
+      "bodyType": "Planet",
+      "volume": 6.254e+13,
+      "density": 1.638,
+      "mass": 1.02409e+26
+    },
+    {
+      "id": "vesta",
+      "englishName": "Vesta",
+      "bodyType": "Asteroid",
+      "volume": 7.46e+7,
+      "density": 3.456,
+      "mass": 2.590e+20
+    },
+    {
+      "id": "halley",
+      "englishName": "Halley",
+      "bodyType": "Comet",
+      "volume": null,
+      "density": null,
+      "mass": null
     }
   ],
   "meta": {}
